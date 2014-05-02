@@ -1,0 +1,34 @@
+
+<style>
+#searchbox {text-align: center;}
+#SRSB {display:none}
+.s4-help {display: none !important;}
+</style>
+
+
+<script type="text/JavaScript">
+
+
+
+
+function searchParam() {
+var searchtags = document.getElementById("tags").value;
+window.location = 'http://resources/sites/ccrp/SitePages/Search%20Page.aspx?tags=' + searchtags;
+}
+</script>
+<div id="searchbox">
+<h1>Search for Common Core Resources</h1>
+
+<input type="text" id="tags" style="width:500px;" onKeydown="javascript: if (event.keyCode==13) searchParam();">
+<input type="button" value="Search" onClick="searchParam()">
+
+<br/><br/>
+<a href="javascript:OpenPopUpPage('http://resources/sites/ccrp/_layouts/Upload.aspx?List={1290EB45-ACAA-471E-B93F-EEEEF703B3F9}&RootFolder=')">​<img src="http://resources/sites/ccrp/Style%20Library/Images/Icons/upload.png" style="height: 54px; width: 247px; margin: 5px; border: none"/></a>
+<a href="javascript:OpenPopUpPage('http://resources/sites/ccrp/_layouts/NewLink.aspx?List=%7B1290EB45%2DACAA%2D471E%2DB93F%2DEEEEF703B3F9%7D&RootFolder=%2Fsites%2Fccrp%2FTeacher%20Resources&ContentTypeId=0x01010A00470F68D208049141B39E5EA945BDE088&Source=%2Fsites%2Fccrp%2FTeacher%2520Resources%2FForms%2FAllItems%2Easpx&IsDlg=1 ')">​<img src="http://resources/sites/ccrp/Style%20Library/Images/Icons/upload_link.png" style="height: 54px; width: 247px; margin: 5px; border: none"/></a>
+</div>
+
+
+
+
+
+
