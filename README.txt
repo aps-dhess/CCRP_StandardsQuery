@@ -1,0 +1,1 @@
+This project includes the custom scripts used in the SharePoint site collection for common core teacher resources. 
