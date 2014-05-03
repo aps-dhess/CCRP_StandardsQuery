@@ -1,0 +1,68 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script type="text/javascript">
+
+    var siteUrl = '/sites/ccrp/';
+    ExecuteOrDelayUntilScriptLoaded(retrieveListItems, "sp.js");
+
+    function getUrlVars() { 
+        var vars = {}; 
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) { 
+            vars[key] = value; 
+        }); 
+        return vars; 
+    } 
+
+    var subjectParam = getUrlVars()["subject"];
+    var gradeParam = getUrlVars()["grade"];
+
+    function retrieveListItems() {
+
+        var clientContext = new SP.ClientContext(siteUrl);
+        var oList = clientContext.get_web().get_lists().getByTitle('Math Standards');
+        
+        var camlQuery = new SP.CamlQuery();
+    	
+    	if(gradeParam == null){
+    	   camlQuery.set_viewXml('<View><Query><Where><Eq><FieldRef Name="Subject"/>' + '<Value Type="Text">'+subjectParam+'</Value></Eq></Where></Query><RowLimit>30</RowLimit></View>');	
+    	}
+    	else {
+    	   camlQuery.set_viewXml('<View><Query><Where><And><Eq><FieldRef Name="Subject"/>' + '<Value Type="Text">'+subjectParam+'</Value></Eq><Eq><FieldRef Name="Grade"/>'+'<Value Type="Text">'+gradeParam+'</Value></Eq></And></Where></Query><RowLimit>30</RowLimit></View>');	
+    	}
+
+        this.collListItem = oList.getItems(camlQuery);   
+        clientContext.load(collListItem);   
+        clientContext.executeQueryAsync(Function.createDelegate(this, this.onQuerySucceeded), Function.createDelegate(this, this.onQueryFailed));            
+    }
+
+    function onQuerySucceeded(sender, args) {
+
+        var listItemInfo = '';
+        var listItemEnumerator = collListItem.getEnumerator(); 
+        while (listItemEnumerator.moveNext()) {
+            var oListItem = listItemEnumerator.get_current();
+
+            if(listItemInfo.indexOf(oListItem.get_item('Grade'))>-1){
+                listItemInfo += '<ul><li><a href="/sites/ccrp/SitePages/JS_Test.aspx?subject='+subjectParam+'&grade='+oListItem.get_item('Grade')+'">'+oListItem.get_item('Domain')+'</a></li></ul>';
+            
+            }
+            else {
+                listItemInfo += oListItem.get_item('Grade');
+                listItemInfo += '<ul><li><a href="/sites/ccrp/SitePages/JS_Test.aspx?subject='+subjectParam+'&grade='+oListItem.get_item('Grade')+'">'+oListItem.get_item('Domain')+'</a></li></ul>';
+
+            }
+
+        }
+
+           
+       
+    	var testString = listItemInfo.toString();
+    	$("#standards").html(testString);
+        $("#title").html(subjectParam);
+    }
+
+    function onQueryFailed(sender, args) {
+    alert('Request failed. ' + args.get_message() + '\n' + args.get_stackTrace());
+    }
+</script>
+
+<h1><span id="title"></span> Standards Home</h1>
+<ul id="standards"></ul>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title></title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script>
+			$(document).ready(function(){
+				$.urlParam = function(name){
+					var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+					if (results==null){
+						return null;
+					}
+					else{
+						return results[1] || 0;
+					}
+				}
+			
+				var subject = $.urlParam('subject');
+				
+				
+				var link = $('.icon-link');
+				link.attr('href',link.attr('href')+'?subject='+subject);
+				$('#title span').html(subject+' ');
+				
+			});
+		</script>
+   <style type="text/css">
+			#panel { 
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 5%;
+				width: 600px;
+				background-color: FFFFFF;
+				padding-bottom: 100px;
+				/*padding-top: 100px;*/
+				
+				text-align: center;
+			}
+			.icon {
+				text-align: center;
+			}
+			.icon-text {
+				font-family: arial;
+				font-size: 16px;
+				text-align: center;
+				font-weight: bold;
+			}
+			a.icon-link {
+				color: 5F2E72;
+				font-weight: regular;
+			}
+			#icon-link {
+				color: 5F2E72;
+				font-weight: regular;
+			}
+			.icon-pic {
+				height: 122px;
+				width: 122px;
+				border = 0;
+				border-style: none;
+			}
+			.IconTable {
+				margin-left: auto;
+				margin-right: auto;
+				font-family: "arial", san-serif;
+				font-size: small;
+			}
+			.IconTable td {
+				padding-bottom: 10px;
+				padding-left: 10px;
+				padding-right: 10px;
+				padding-top: 10px;
+				vertical-align: top;
+			}
+
+		</style> 
+   
+	</head>
+	<body>
+
+	   
+	  
+	 <div id="panel">
+	 <div id = "title"><h1><span></span>Homepage</h1></div>
+	  <table class="IconTable">
+	<tr>
+		<td>
+			<div class="icon"><a class="icon-link" href= "http://resources.aspx"><img class="icon-pic" src="http://resources/sites/ccrp/Style%20Library/Images/Icons/resources%20wrench.png" /></a></div>
+			<div class="icon-text"><a class="icon-link" href= "http://resources.aspx">Resources</a></div>
+		</td>
+		<td>
+			<div class="icon"><a class="icon-link" href= "http://assessments.aspx"><img class="icon-pic" src="http://resources/sites/ccrp/Style%20Library/Images/Icons/assessmentslink.png" /></a></div>
+			<div class="icon-text"><a class="icon-link" href= "http://assessments.aspx">Assessments</a></div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="icon"><a class="icon-link" href= "http://ig.apsx"><img class="icon-pic" src="http://resources/sites/ccrp/Style%20Library/Images/Icons/Resources.png" /></a></div>
+			<div class="icon-text"><a class="icon-link" href= "http://ig.apsx">Instructional Guidelines</a></div>
+		</td>
+		<td>
+			<div class="icon"><a class="icon-link" href= "http://standards.aspx"><img class="icon-pic" src="http://resources/sites/ccrp/Style%20Library/Images/Icons/CommonCore.png" /></a></div>
+			<div class="icon-text"><a class="icon-link" href= "http://standards.aspx">Standards</a></div>
+		</td>
+	</tr>
+	
+</table>
+	</div>  
+	</body>
+</html>
