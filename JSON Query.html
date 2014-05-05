@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+
+<style>
+#test {width: 800px;}
+.standards{float: left; width: 220px; padding: 10px;}
+
+</style>
+
+
+<h1><span id ="title"></span> Standards Home Page</h1>
+<div id="test"></div>
+<script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.SPServices/2014.01/jquery.SPServices.min.js"></script>
+
+<script>
+
+	//var siteUrl = '/sites/ccrp/';
+
+// $(document).ready(function() {
+
+//     console.log( "Hello!" );
+
+// });
+ // function getUrlVars() { 
+ //        var vars = {}; 
+ //        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) { 
+ //            vars[key] = value; 
+ //        }); 
+ //        return vars; 
+ //    } 
+
+ //    var SubjectParam = decodeURI(getUrlVars()["Subject"]);
+var subjectParam = 'K-5 Math';
+
+	var standards = $().SPServices.SPGetListItemsJson({
+	  webURL: "http://resources/sites/ccrp/",
+	  listName: "Math Standards",
+	  CAMLViewName: "All Items",
+	  CAMLQuery: "<View><Query><Where><Eq><FieldRef Name='Subject'/><Value Type='Text'>"+subjectParam+"</Value></Eq></Where></Query></View>",
+	  CAMLViewFields: "",
+	  CAMLRowLimit: "30",
+	  CAMLQueryOptions: "",
+	  // changeToken: "",
+	  // contains: "",
+	  // mapping: null,
+	
+	  debug: false
+	});
+
+	//var standardsList
+	// $.when(standards).done(function(){
+	// 	standardsList = this.data;
+	// });
+
+	$.when(standards).done(function() {
+   		standardsList = this.data;
+   		console.log(standardsList[0].Subject);
+
+   		var Grades = [];
+
+		for(var i in standardsList){
+
+			var Grade = '<h3>'+standardsList[i].Grade+'</h3>';
+
+			if(Grades.indexOf(Grade)<=-1){
+				Grades += '<div class="standards">'+Grade;
+			}
+
+			var Domains = [];
+
+			for(var j in standardsList){
+
+				if(standardsList[i].Grade == standardsList[j].Grade){
+					var Domain = '<li>'+standardsList[j].Domain+'</li>';
+					
+					if(Domains.indexOf(Domain)<=-1){
+						Domains += Domain;
+					}
+				}
+			}
+
+			if(Grades.indexOf(Domains)<=-1){
+				Grades += Domains+'</div>';
+			}
+				
+		}
+
+		console.log(Grades);
+		$("#test").append(Grades);
+	});
+$("#title").html(subjectParam);
+
+// function filter_by_Subject(query, obj)
+// {
+//     var new_obj={}, total=0, query=query.toLowerCase();
+//     for(var i in obj)
+//     {
+//         var emp_st=obj[i].Subject.toLowerCase();
+//         if(emp_st==query) { new_obj[i]=obj[i]; total++; }
+//     }
+//     if(total>0) return new_obj;
+//     return false;
+// }
+
+// Filter the data object
+//var standards = filter_by_Subject(SubjectParam, standardsList);
+
+	
+
+
+
+</script>
