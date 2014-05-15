@@ -1,0 +1,83 @@
+<link rel="stylesheet" type="text/css" href="http://resources/sites/ccrp/Style%20Library/custom%20scripts/StandardsStyle.css">
+
+<div id="container">
+    <h1><span id="title"></span> Standards Home Page</h1>
+    <div id="test"></div>
+</div>
+
+<script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+<script language="javascript" type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script language="javascript" type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.SPServices/2014.01/jquery.SPServices.min.js"></script>
+
+<script>
+// _spBodyOnLoadFunctionNames.push("standardsLoad");   
+// function standardsLoad(){
+     
+    function getUrlVars() { 
+         var vars = {}; 
+         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) { 
+             vars[key] = value; 
+         }); 
+         return vars; 
+     }; 
+
+    var subjectParam = decodeURI(getUrlVars()["subject"]);
+
+    var standards = $().SPServices.SPGetListItemsJson({
+	  webURL: "http://resources/sites/ccrp/",
+	  listName: "Math Standards",
+	  CAMLViewName: "All Items",
+	  CAMLQuery: "<View><Query><Where><Eq><FieldRef Name='Subject'/><Value Type='Text'>"+subjectParam+"</Value></Eq></Where></Query></View>",
+	  CAMLViewFields: "",
+	  CAMLRowLimit: "",
+	  CAMLQueryOptions: "",
+	  // changeToken: "",
+	  // contains: "",
+	  // mapping: null,
+	  debug: false
+	});
+    
+$.when(standards).done(function() {
+    standardsListOrig = this.data;
+    var standardsListClean = _.uniq(standardsListOrig, function(item, key, Domain){
+	    return item.Grade + item.Domain;
+    });
+
+	var standardsList = _.sortBy(standardsListClean, ['GradeID', 'Domain']);
+    var Grades = [];
+    var gradesCache = [];
+    
+/* Begin first loop(grades) */
+        for(var i in standardsList){
+            var Grade = '<div class="standards"><h3>'+standardsList[i].Grade+'</h3>';
+            var Domains = [];
+
+        /* Begin second loop(domains) */
+            for(var j in standardsList){
+                if(standardsList[i].Grade == standardsList[j].Grade){
+                    var Domain = '<li class="domain"><a href="">'+standardsList[j].Domain+'</a></li>';
+
+                    if($.inArray(Domain,Domains)==-1){
+                        Domains.push(Domain);
+                    }
+                }
+            }
+        /* End second loop */
+
+            if($.inArray(Grade+Domains.sort()+'</div>',Grades)==-1){ 
+                Grades.push(Grade+Domains.sort()+'</div>');
+            }
+        }
+    /* End First loop */
+
+        var finalGrades = _.uniq(Grades);
+        finalGrades= finalGrades.toString().replace(/,/g,"");
+
+        $("#title").html(subjectParam); 
+        $("#test").append(finalGrades);
+    });
+//};
+</script>
+
+

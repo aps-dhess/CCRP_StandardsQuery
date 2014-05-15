@@ -1,0 +1,80 @@
+<link rel="stylesheet" type="text/css" href="StandardsStyle.css">
+
+<div id="container">
+    <h1><span id="title"></span> Standards Home Page</h1>
+    <div id="test"></div>
+</div>
+
+<script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+<script language="javascript" type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+
+<script>
+
+window.onload = function() {
+
+	var subjectParam = 'K-5 Math';
+	var standardsListOrig = [
+		{"GradeID": 0, "Grade": "Math K", "Domain": "Counting & Cardinality"},
+		{"GradeID": 0, "Grade": "Math K", "Domain": "Counting & Cardinality"},
+        {"GradeID": 2, "Grade": "Math 2", "Domain": "Geometry"},
+		{"GradeID": 0, "Grade": "Math K", "Domain": "Counting & Cardinality"},
+		{"GradeID": 0, "Grade": "Math K", "Domain": "Counting & Cardinality"},
+		{"GradeID": 0, "Grade": "Math K", "Domain": "Orders of Operation"},
+		{"GradeID": 0, "Grade": "Math K", "Domain": "Geometry"},
+		{"GradeID": 1, "Grade": "Math 1", "Domain": "Counting & Cardinality"},
+		{"GradeID": 1, "Grade": "Math 1", "Domain": "Counting & Cardinality"},
+        {"GradeID": 1, "Grade": "Math 1", "Domain": "Geometry"},
+		{"GradeID": 1, "Grade": "Math 1", "Domain": "Orders of Operation"},
+		{"GradeID": 3, "Grade": "Math 3", "Domain": "Geometry"},
+        {"GradeID": 5, "Grade": "Math 5", "Domain": "Geometry"},
+		{"GradeID": 2, "Grade": "Math 2", "Domain": "Geometry"},
+		
+		{"GradeID": 3, "Grade": "Math 3", "Domain": "Orders of Operation"},
+		{"GradeID": 4, "Grade": "Math 4", "Domain": "Geometry"},
+//        {"GradeID": 5, "Grade": "Math 5", "Domain": "Orders of Operation"},
+	];
+
+	var standardsListClean = _.uniq(standardsListOrig, function(item, key, Domain){
+	    return item.Grade + item.Domain;
+	});
+
+	var standardsList = _.sortBy(standardsListClean, ['GradeID', 'Domain']);
+    
+	
+    var Grades = [];
+    var gradesCache = [];
+    
+/* Begin first loop(grades) */
+	for(var i in standardsList){
+		var Grade = '<div class="standards"><h3>'+standardsList[i].Grade+'</h3>';
+        var Domains = [];
+        
+    /* Begin second loop(domains) */
+		for(var j in standardsList){
+			if(standardsList[i].Grade == standardsList[j].Grade){
+				var Domain = '<li><a href="">'+standardsList[j].Domain+'</a></li>';
+				
+                if($.inArray(Domain,Domains)==-1){
+					Domains.push(Domain);
+				}
+			}
+		}
+    /* End second loop */
+
+		if($.inArray(Grade+Domains.sort()+'</div>',Grades)==-1){ 
+			Grades.push(Grade+Domains.sort()+'</div>');
+            console.log(Grades);
+		}
+	}
+/* End First loop */
+    
+    var finalGrades = _.uniq(Grades);
+    finalGrades= finalGrades.toString().replace(/,/g,"");
+
+    $("#test").append(finalGrades);
+	$("#title").html(subjectParam);
+};
+</script>
+
+
