@@ -20,9 +20,9 @@
          return vars; 
      }; 
 
-    var subjectParam = decodeURI(getUrlVars()["subject"]);
-    var gradeParam = decodeURI(getUrlVars()["grade"]);
-    var domainParam = decodeURI(getUrlVars()["domain"]);
+    var subjectParam = decodeURIComponent(getUrlVars()["subject"]).replace("&","&amp;");
+    var gradeParam = decodeURIComponent(getUrlVars()["grade"]).replace("&","&amp;");
+    var domainParam = decodeURIComponent(getUrlVars()["domain"]).replace("&","&amp;");
 
     var clusters = $().SPServices.SPGetListItemsJson({
 	  webURL: "http://resources/sites/ccrp/",
