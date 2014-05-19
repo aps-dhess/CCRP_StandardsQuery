@@ -1,5 +1,5 @@
 .container {
-  /*margin: 50%, 0;*/
+  margin: 20px auto;
   width: 1060px;
   border: 2px;
   border-style:solid;
@@ -7,97 +7,86 @@
   padding: 0px 0px;
 }
 
-
-.heading, .middle,.right,.left{
+.titles{
   vertical-align: middle;
   text-align: center;
-  line-height: 218%;
   background-color: #ECF0F1;
   border: 2px;
   border-style:solid;
   border-color:#98bf21;
-  height: 5rem;
   color: purple;
   font-size: 2.0rem;
   font-weight: bold;
 }
 
+
+.heading{
+  line-height: 60px;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #ECF0F1;
+  border: 2px;
+  border-style:solid;
+  border-color:#98bf21;
+  height: 60px;
+  color: purple;
+  font-size: 2.0rem;
+  font-weight: bold;
+}
+
+.middle{
+  border-top: 0px;
+  border-bottom: 0px;
+  border-right: 2px;
+  border-left: 2px;
+  border-style:solid;
+  border-color:#98bf21;
+}
+
+.middle,.right, .left {
+  line-height: 70px;
+  height: 70px;
+  width: 345px;
+  padding: 0px;
+  display: inline-block;
+}
+
 .purple{
+  padding: 10px;
+  border: 0px;
   background-color: purple;
 }
 
 .split .text {
+  padding: 10px;
+  width: 526px;
+  display: inline-block;
+  border: 0px;
+  border-top: 0px;
   border-right: 2px;
   border-style:solid;
   border-color:#98bf21;
 }
 
-span.description {
-  color: purple;
-  font-weight: bold;
+.text {
+  padding: 10px;
 }
 
-.process .column{
-  display: inline-block;
-  float: left;
-  width: 50%;
-  border: 2px;
-  border-style:solid;
-  border-color:#98bf21;
+.bottom-container {
+    width: auto;
+    overflow: auto;
+    padding: 0;
+    margin: auto;
+    word-wrap:break-word;
 }
 
-/*.content-container {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    background: #ffffff;
-    display: block;
-    padding:0;
-    font-size: 12px;
+.cube {
+    float: left;
+    background: #FFF;
+    width: 50%; height: 500px;
+    border-top-style:solid;
+    border-right-style:solid;
+    border-bottom-style:solid;
+    border-left-style:solid;
+    padding: 10px;
 }
-
-.inner-square {
-    background: #cccccc;
-    width: 520px;
-    width: calc(50% - 10px);
-    height: calc(50% - 8px);
-    margin: 5px;
-    display:inline-block;
-    vertical-align: top;
-    border: 1px solid black;
-    /*overflow: hidden;*/
-}
-.inner-square:nth-child(even) {
-    margin-left:0;
-}
-.inner-square:nth-child(n+2) {
-    margin-top:0;
-}
-
-.inner-text {
-  float: left;
-  position: relative;
-}
-*/
-
-
-table {
-  width: 100%;
-  border: 1px solid #000;
-}
-th.logo{
-  width: 20%
-}
-
-th.inst-guide{
-  width: 60%;
-}
-
-th.date{
-  width: 20%;
-}
-
-td.indicators, td.smp {
-  width: 50%;
-}
-
