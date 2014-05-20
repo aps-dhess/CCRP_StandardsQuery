@@ -10,14 +10,14 @@
 <script language="javascript" type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 <script language="javascript" type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.SPServices/2014.01/jquery.SPServices.min.js"></script>
 
-<script>    
-    function getUrlVars() { 
-         var vars = {}; 
-         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) { 
-             vars[key] = value; 
-         }); 
-         return vars; 
-     }; 
+<script>
+    function getUrlVars() {
+         var vars = {};
+         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+             vars[key] = value;
+         });
+         return vars;
+     };
 
     var subjectParam = decodeURIComponent(getUrlVars()["subject"]).replace("&","&amp;");
 
@@ -34,8 +34,7 @@
 	  // mapping: null,
 	  debug: false
 	});
-    
-    
+
 $.when(standards).done(function() {
     standardsListOrig = this.data;
     var standardsListClean = _.uniq(standardsListOrig, function(item, key, Domain){
@@ -45,7 +44,7 @@ $.when(standards).done(function() {
 	var standardsList = _.sortBy(standardsListClean, ['GradeID', 'Domain']);
     var Grades = [];
     var gradesCache = [];
-    
+
 /* Begin first loop(grades) */
         for(var i in standardsList){
             var Grade = '<div class="standards"><h3>'+standardsList[i].Grade+'</h3>';
@@ -62,7 +61,7 @@ $.when(standards).done(function() {
             }
         /* End second loop */
 
-            if($.inArray(Grade+Domains.sort()+'</div>',Grades)==-1){ 
+            if($.inArray(Grade+Domains.sort()+'</div>',Grades)==-1){
                 Grades.push(Grade+Domains.sort()+'</div>');
             }
         }
@@ -71,7 +70,7 @@ $.when(standards).done(function() {
         var finalGrades = _.uniq(Grades);
         finalGrades= finalGrades.toString().replace(/,/g,"");
 
-        $("#title").html(subjectParam); 
+        $("#title").html(subjectParam);
         $("#test").append(finalGrades);
     });
 </script>

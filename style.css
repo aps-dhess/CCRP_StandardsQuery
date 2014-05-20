@@ -1,0 +1,138 @@
+.container {
+  margin: 20px auto;
+  width: 1060px;
+  border: 2px;
+  border-style:solid;
+  /*border-color: black;*/
+  padding: 0px 0px;
+}
+
+.heading h3 {
+  margin: 0px;
+}
+
+h4 {
+  text-align: center;
+  margin: 0px 0px;
+}
+
+.titles{
+  vertical-align: middle;
+  text-align: center;
+  background-color: #ECF0F1;
+  border: 0px;
+  border-style:solid;
+  border-top: 2px;
+  border-bottom: 2px;
+  color: purple;
+  font-size: 2.0rem;
+  font-weight: bold;
+}
+
+
+.heading{
+  height: 50px;
+  text-align: center;
+  background-color: #ECF0F1;
+  border: 0px;
+  border-top: 1px;
+  border-bottom: 1px;
+  border-style:solid;
+  border-color: black;
+  color: purple;
+  font-weight: bold;
+  padding: 10px 0px;
+}
+
+.middle{
+  border: 0px;
+  border-right: 2px;
+  border-left: 2px;
+  border-style:solid;
+  border-color: black;
+}
+
+.middle,.right, .left {
+  line-height: 70px;
+  height: 70px;
+  width: 345px;
+  padding: 0px;
+  display: inline-block;
+}
+
+.purple{
+  padding: 10px;
+  border: 0px;
+  background-color: purple;
+}
+
+.split .text {
+  padding: 10px;
+  width: 526px;
+  display: inline-block;
+}
+
+.text-left{
+  border-right: 2px solid black;
+}
+
+.text-right{
+  border-right: 0px;
+  text-align: center;
+}
+
+.bottom-container, .text{
+  padding: 10px;
+}
+
+.bottom-container h3{
+  margin: 0px;
+}
+
+.split-heading {
+  text-decoration: underline;
+  text-align: center;
+}
+
+.split-heading .bold{
+  font-weight: bold;
+}
+
+ul li{
+  list-style-type:  none;
+  text-align: center;
+}
+
+span.description {
+  font-weight: bold;
+  color: purple;
+}
+
+.bottom-container {
+    width: auto;
+    overflow: auto;
+    padding: 0;
+    margin: auto;
+    word-wrap: break-word;
+}
+
+.cube {
+    float: left;
+    background: #FFF;
+    width: 50%; height: 500px;
+    padding: 10px;
+}
+
+.cube:nth-of-type(2n) {
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.cube:nth-of-type(n) {
+    border-bottom: 1px solid black;
+}
+
+.assessment-heading {
+  border-top: 0px;
+  margin: 0 auto;
+}
