@@ -4,12 +4,9 @@
   <title>Instructional Guidelines Page</title>
   <link href="bootstrap.min.css" rel="stylesheet" media="screen">
   <link href="style.css" rel="stylesheet" media="screen">
-
 </head>
 
 <body>
-
-<script id="template" type="text/x-handlebars-template">
 <div class="container">
     <div class='titles'>
       <div class="left">Aspire Logo</div>
@@ -18,53 +15,61 @@
       <div class="purple"></div>
     </div>
     <div class="split">
-      <div class="text">
-        <p>
-          Aligned to the following AIR Indicators:
+      <div class="text text-left">
+        <p class="split-heading">
+          Aligned to the following <span class="bold">AIR</span> Indicators:
         </p>
         <ul>
-          <li>{{AIR_Indicators}}</li>
+          <li id="air-indicators">{{AIR_Indicators}}</li>
         </ul>
       </div>
-      <div class="text">
-        <p>
-          Aligned to the following Standards of Mathematical Practice:
+      <div class="text text-right">
+        <p class="split-heading">
+          Aligned to the following <span class="bold">Standards of Mathematical Practice:</span>
         </p>
         <ul>
-          <li>{{SMP}}</li>
+          <li id="math-standards">{{SMP}}</li>
         </ul>
       </div>
     </div>
-      <div class="purpose heading">
+    <div class="purpose heading">
         <h3>Purpose</h3>
-      </div>
-      <div class="purpose text">
-        <p>
+    </div>
+    <div class="purpose">
+      <div class="text">
+        <p id="description-text">
           {{Purpose}}
         </p>
       </div>
+    </div>
     <div class="process heading">
       <h3> Process </h3>
     </div>
 
     <div class="bottom-container text">
-        <div class="cube">
-          <center><h1> Hello!</h1></center>
-          <p>heloal;djl;akjdfals;d</p>
-        </div>
-      <div class="cube">rayasdfasdfasdfadsafadsfsdafsadfasdfadsfdsafsadfdsafasdfasdfsfadsfasdf</div>
-      <div class="cube">rayasdfasdfasdfadsafadsfsdafsadfasdfadsfdsafsadfdsafasdfasdfsfadsfasdf</div>
-      <div class="cube">me</div>
-      <div class="cube">me</div>
+    </div>
+    <div class="assessment-heading heading">
+      <h3> Assessments and Scoring Method </h3>
+    </div>
+    <div class="split">
+      <div class="text text-left">
+          <h4>Formative</h4>
+        <ul id="formative-bullets">
+
+        </ul>
+      </div>
+      <div class="text text-right">
+          <h4>Summative</h4>
+        <ul id="summative-bullets">
+        </ul>
+      </div>
     </div>
 </div>
 
-  </script>
   <script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <script language="javascript" type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
   <script language="javascript" type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-  <!-- <script language="javascript" type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.SPServices/2014.01/jquery.SPServices.min.js"></script> -->
+  <script language="javascript" type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.SPServices/2014.01/jquery.SPServices.min.js"></script>
   <script type="text/javascript" src="handlebars-v1.3.0.js"></script>
   <script type="text/javascript" src="script.js"></script>
 </body>
