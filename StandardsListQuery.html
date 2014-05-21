@@ -1,8 +1,11 @@
-<!--<link rel="stylesheet" type="text/css" href="http://resources/sites/ccrp/Style%20Library/custom%20scripts/StandardsListStyle.css">-->
+<link rel="stylesheet" type="text/css" href="http://resources/sites/ccrp/Style%20Library/custom%20scripts/list-style.css">
+<link rel="stylesheet" type="text/css" href="http://resources/sites/ccrp/Style%20Library/custom%20scripts/bootstrap.min.css">
 
-<div id="container">
+<div class="container">
+
     <h1 id="domainTitle"><span id="grade"></span> - <a id = "domainTitleURL" href="http://resources/sites/ccrp/SitePages/Search%20Page.aspx?tags="><span id="domain"></span></a></h1>
-    <div id="clusters"></div>
+    <div class="clusters"></div>
+
 </div>
 
 <script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -12,13 +15,13 @@
 
 <script>
 
-    function getUrlVars() { 
-         var vars = {}; 
-         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) { 
-             vars[key] = value; 
-         }); 
-         return vars; 
-     }; 
+    function getUrlVars() {
+         var vars = {};
+         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+             vars[key] = value;
+         });
+         return vars;
+     };
 
     var subjectParam = decodeURIComponent(getUrlVars()["subject"]).replace("&","&amp;");
     var gradeParam = decodeURIComponent(getUrlVars()["grade"]).replace("&","&amp;");
@@ -34,12 +37,12 @@
 	  CAMLQueryOptions: "",
 	  debug: false
 	});
-    
+
 
 $.when(clusters).done(function() {
     clustersListOrig = this.data;
 
-    
+
     var clustersListClean = _.uniq(clustersListOrig, function(item, key, StandardID){
 	    return item.Cluster + item.StandardID + item.Standard;
     });
@@ -47,7 +50,7 @@ $.when(clusters).done(function() {
 	var clustersList = _.sortBy(clustersListClean, ['Cluster', 'Title']);
     var Clusters = [];
     var clusterCache = [];
-    
+
 /* Begin first loop(grades) */
         for(var i in clustersList){
             var Cluster = "<div class='standards'><h3><a href='http://resources/sites/ccrp/SitePages/Search%20Page.aspx?tags="+clustersList[i].Cluster+"'>"+clustersList[i].Cluster+"</a></h3>";
@@ -58,7 +61,7 @@ $.when(clusters).done(function() {
             for(var j in clustersList){
                 if(clustersList[i].Domain == clustersList[j].Domain){
 
-                    var Standard = "<li class='standard'><a href='http://resources/sites/ccrp/SitePages/Search%20Page.aspx?tags="+clustersList[j].Title+"'>"+clustersList[j].Title+"</a> "+clustersList[j].Standard+"</li>";
+                    var Standard = "<li class='standard'><span class='label label-primary'><a href='http://resources/sites/ccrp/SitePages/Search%20Page.aspx?tags="+clustersList[j].Title+"'>"+clustersList[j].Title+"</a></span><div class="description"><p>"+clustersList[j].Standard+"</p></div></li>";
 
                     if($.inArray(Standard,Standards)==-1){
                         Standards.push(Standard);
@@ -67,7 +70,7 @@ $.when(clusters).done(function() {
             }
         /* End second loop */
 
-            if($.inArray(Cluster+Standards.sort()+'</div>',Standards)==-1){ 
+            if($.inArray(Cluster+Standards.sort()+'</div>',Standards)==-1){
                 Clusters.push(Cluster+Standards.sort()+'</div>');
             }
         }
@@ -76,11 +79,11 @@ $.when(clusters).done(function() {
         var finalClusters = _.uniq(Clusters);
 //        console.log(finalClusters);
         finalClusters = finalClusters.toString().replace(/,/g,"");
-        $("#grade").html(gradeParam); 
-        $("#domain").html(domainParam); 
+        $("#grade").html(gradeParam);
+        $("#domain").html(domainParam);
 		var link = $('#domainTitleURL');
         link.attr('href',link.attr('href')+domainParam);
-        $("#clusters").append(finalClusters);
+        $(".clusters").append(finalClusters);
     });
 
 </script>

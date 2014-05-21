@@ -1,0 +1,56 @@
+body{
+  background-color: #e6e8eb;
+}
+
+ul li{
+  list-style-type: none;
+}
+
+ul li a:link{
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+ul li a:visited{
+  color: white;
+  display: block;
+}
+
+ul li .label-primary:hover {
+  background: rgb(235, 174, 50);
+}
+
+span.label{
+  background: #611f73;
+  width: 100px;
+  height: 60px;
+  font-size: 18px;
+  border-radius: 0px;
+  line-height: 50px;
+  display: inline-block;
+  margin: 0px 60px 60px 0px;
+}
+
+li.standard {
+  padding: 34px 40px;
+  border-top: 1px solid #ebedf0;
+  border-bottom: 1px solid #ebedf0;
+  /*display: inline-block;*/
+  /*float: left;*/
+}
+
+div.well {
+  background-color: white;
+}
+
+span.label-primary{
+  float: left;
+  /*display: inline-block;*/
+}
+
+
+div.description{
+  max-width: auto;
+  max-height: auto;
+}
