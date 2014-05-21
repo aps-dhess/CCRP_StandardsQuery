@@ -41,7 +41,7 @@ $.when(standards).done(function() {
 	    return item.Grade + item.Domain;
     });
 
-	var standardsList = _.sortBy(standardsListClean, ['Grade', 'Domain']);
+	var standardsList = _.sortBy(standardsListClean, ['GradeID', 'Domain']);
     var Grades = [];
     var gradesCache = [];
 
