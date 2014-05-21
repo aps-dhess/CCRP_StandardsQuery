@@ -23,7 +23,7 @@
 
     var standards = $().SPServices.SPGetListItemsJson({
 	  webURL: "http://resources/sites/ccrp/",
-	  listName: "Math Standards",
+	  listName: "Standards",
 	  CAMLViewName: "All Items",
 	  CAMLQuery: "<View><Query><Where><Eq><FieldRef Name='Subject'/><Value Type='Text'>"+subjectParam+"</Value></Eq></Where></Query></View>",
 	  CAMLViewFields: "",
@@ -41,7 +41,7 @@ $.when(standards).done(function() {
 	    return item.Grade + item.Domain;
     });
 
-	var standardsList = _.sortBy(standardsListClean, ['GradeID', 'Domain']);
+	var standardsList = _.sortBy(standardsListClean, ['Grade', 'Domain']);
     var Grades = [];
     var gradesCache = [];
 
