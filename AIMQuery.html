@@ -1,0 +1,78 @@
+<!--<link rel="stylesheet" type="text/css" href="http://resources/sites/ccrp/Style%20Library/custom%20scripts/StandardsStyle.css">-->
+
+<style>
+#test {
+margin-left: auto;
+    margin-right: auto;
+}
+    .aim{ list-style: none;}
+   .aims {
+margin-left: auto;
+    margin-right: auto;
+} 
+</style>
+<div id="container">
+    <h1><span id="title"></span> Aspire Instructional Methods (AIMs)</h1>
+    <div id="test"></div>
+</div>
+
+<script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+<script language="javascript" type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script language="javascript" type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.SPServices/2014.01/jquery.SPServices.min.js"></script>
+
+<script>
+    function getUrlVars() {
+         var vars = {};
+         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+             vars[key] = value;
+         });
+         return vars;
+     };
+
+    var subjectParam = decodeURIComponent(getUrlVars()["subject"]).replace("&","&amp;");
+    var aims = $().SPServices.SPGetListItemsJson({
+	  webURL: "http://resources/sites/ccrp/",
+	  listName: "Aspire Instructional Methods",
+	  CAMLViewName: "All Items",
+	  CAMLQuery: "<View><Query><Where><Eq><FieldRef Name='Subject'/><Value Type='Text'>"+subjectParam+"</Value></Eq></Where></Query></View>",
+	  CAMLViewFields: "",
+	  CAMLRowLimit: "",
+	  CAMLQueryOptions: "",
+	  // changeToken: "",
+	  // contains: "",
+	  // mapping: null,
+	  debug: false
+	});
+
+$.when(aims).done(function() {
+    aimsListOrig = this.data;
+    var aimsListClean = _.uniq(aimsListOrig, function(item, key, AIM_x0020_Title){
+	    return item.AIM_x0020_Title;
+    });
+
+	var aimsList = _.sortBy(aimsListClean, ['AIM_x0020_Title']);
+    var AIMS = [];
+
+/* Begin first loop(grades) */
+        for(var i in aimsList){
+    
+var AIM = "<div class='aims'><li class='aim'><a href='http://resources/sites/ccrp/_layouts/FormServer.aspx?XmlLocation=/sites/ccrp/Aspire%20Instructional%20Methods/"+encodeURIComponent(aimsList[i].Subject)+"%20-%20AIM_%20"+encodeURIComponent(aimsList[i].AIM_x0020_Title)+".xml&ClientInstalled=true&Source=http%3A%2F%2Fresources%2Fsites%2Fccrp%2FAspire%2520Instructional%2520Methods%2FForms%2FAllItems%2Easpx&DefaultItemOpen=1'>"+aimsList[i].AIM_x0020_Title+"</a></li></div>";
+            
+
+                    if($.inArray(AIM,AIMS)==-1){
+                        AIMS.push(AIM);
+                    }
+        }
+          
+    /* End First loop */
+
+        var finalAIMS = _.uniq(AIMS);
+        finalAIMS= finalAIMS.toString().replace(/,/g,"");
+
+        $("#title").html(subjectParam);
+        $("#test").append(finalAIMS);
+    });
+</script>
+
+
