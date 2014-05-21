@@ -11,9 +11,6 @@
 <script language="javascript" type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.SPServices/2014.01/jquery.SPServices.min.js"></script>
 
 <script>
-// _spBodyOnLoadFunctionNames.push("standardsLoad");
-// function standardsLoad(){
-
     function getUrlVars() {
          var vars = {};
          var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -22,7 +19,7 @@
          return vars;
      };
 
-    var subjectParam = decodeURI(getUrlVars()["subject"]);
+    var subjectParam = decodeURIComponent(getUrlVars()["subject"]).replace("&","&amp;");
 
     var standards = $().SPServices.SPGetListItemsJson({
 	  webURL: "http://resources/sites/ccrp/",
@@ -57,7 +54,6 @@ $.when(standards).done(function() {
             for(var j in standardsList){
                 if(standardsList[i].Grade == standardsList[j].Grade){
                     var Domain = "<li class='domain'><a href='http://resources/sites/ccrp/SitePages/StandardsList.aspx?subject="+subjectParam+"&grade="+standardsList[j].Grade+"&domain="+encodeURIComponent(standardsList[j].Domain)+"'>"+standardsList[j].Domain+"</a></li>";
-
                     if($.inArray(Domain,Domains)==-1){
                         Domains.push(Domain);
                     }
@@ -77,7 +73,6 @@ $.when(standards).done(function() {
         $("#title").html(subjectParam);
         $("#test").append(finalGrades);
     });
-//};
 </script>
 
 

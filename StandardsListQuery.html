@@ -51,12 +51,15 @@ $.when(clusters).done(function() {
 /* Begin first loop(grades) */
         for(var i in clustersList){
             var Cluster = "<div class='standards'><h3><a href='http://resources/sites/ccrp/SitePages/Search%20Page.aspx?tags="+clustersList[i].Cluster+"'>"+clustersList[i].Cluster+"</a></h3>";
+
             var Standards = [];
 
         /* Begin second loop(domains) */
             for(var j in clustersList){
                 if(clustersList[i].Domain == clustersList[j].Domain){
+
                     var Standard = "<li class='standard'><a href='http://resources/sites/ccrp/SitePages/Search%20Page.aspx?tags="+clustersList[j].Title+"'>"+clustersList[j].Title+"</a> "+clustersList[j].Standard+"</li>";
+
                     if($.inArray(Standard,Standards)==-1){
                         Standards.push(Standard);
                     }
