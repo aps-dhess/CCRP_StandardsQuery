@@ -18,8 +18,14 @@
 				var subject = $.urlParam('subject');
 				
 				
-				var link = $('.icon-link');
-				link.attr('href',link.attr('href')+'?subject='+subject);
+				var linkR = $('.icon-linkR');
+                linkR.attr('href',linkR.attr('href')+'?subject='+subject);
+                var linkA = $('.icon-linkA');
+                linkA.attr('href',linkA.attr('href')+'?subject='+subject);
+                var linkI = $('.icon-linkI');
+                linkI.attr('href',linkI.attr('href')+'?subject='+subject);
+                var linkS = $('.icon-linkS');
+				linkS.attr('href',linkS.attr('href')+'?subject='+subject);
 				$('#title span').html(subject+' ');
 				
 			});
@@ -85,22 +91,22 @@
 	  <table class="IconTable">
 	<tr>
 		<td>
-			<div class="icon"><a class="icon-link" href= "http://resources.aspx"><img class="icon-pic" src="http://resources/sites/ccrp/Style%20Library/Images/Icons/resources%20wrench.png" /></a></div>
-			<div class="icon-text"><a class="icon-link" href= "http://resources.aspx">Resources</a></div>
+			<div class="icon"><a class="icon-linkR" href= "http://resources.aspx"><img class="icon-pic" src="http://resources/sites/ccrp/Style%20Library/Images/Icons/resources%20wrench.png" /></a></div>
+			<div class="icon-text"><a class="icon-linkR" href= "http://resources.aspx">Curricular Units and Resources</a></div>
 		</td>
 		<td>
-			<div class="icon"><a class="icon-link" href= "http://assessments.aspx"><img class="icon-pic" src="http://resources/sites/ccrp/Style%20Library/Images/Icons/assessmentslink.png" /></a></div>
-			<div class="icon-text"><a class="icon-link" href= "http://assessments.aspx">Assessments</a></div>
+			<div class="icon"><a class="icon-linkA" href= "http://assessments.aspx"><img class="icon-pic" src="http://resources/sites/ccrp/Style%20Library/Images/Icons/assessmentslink.png" /></a></div>
+			<div class="icon-text"><a class="icon-linkA" href= "http://assessments.aspx">Assessments</a></div>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<div class="icon"><a class="icon-link" href= "http://ig.apsx"><img class="icon-pic" src="http://resources/sites/ccrp/Style%20Library/Images/Icons/Resources.png" /></a></div>
-			<div class="icon-text"><a class="icon-link" href= "http://ig.apsx">Instructional Guidelines</a></div>
+			<div class="icon"><a class="icon-linkI" href= "http://ig.apsx"><img class="icon-pic" src="http://resources/sites/ccrp/Style%20Library/Images/Icons/Resources.png" /></a></div>
+			<div class="icon-text"><a class="icon-linkI" href= "http://ig.apsx">AIMs and Resources</a></div>
 		</td>
 		<td>
-			<div class="icon"><a class="icon-link" href= "http://standards.aspx"><img class="icon-pic" src="http://resources/sites/ccrp/Style%20Library/Images/Icons/CommonCore.png" /></a></div>
-			<div class="icon-text"><a class="icon-link" href= "http://standards.aspx">Standards</a></div>
+			<div class="icon"><a class="icon-linkS" href= "http://resources/sites/ccrp/SitePages/StandardsHomePage.aspx"><img class="icon-pic" src="http://resources/sites/ccrp/Style%20Library/Images/Icons/CommonCore.png" /></a></div>
+			<div class="icon-text"><a class="icon-linkS" href= "http://resources/sites/ccrp/SitePages/StandardsHomePage.aspx">Standards</a></div>
 		</td>
 	</tr>
 	
