@@ -1,56 +1,65 @@
-body{
-  background-color: #e6e8eb;
+div.container {
+  font-family: arial;
+  width: 960px;
+  margin: 0px auto;
 }
 
-ul li{
+#sub-heading{
+  color: rgb(235, 174, 50);
+  font-size: 2em
+}
+
+p.standard-text{
+  font-size: 1.5em;
+}
+
+ul.standard-block {
+  margin: 0px 0px;
+}
+
+ul li {
   list-style-type: none;
 }
 
-ul li a:link{
+ul li.list a:link{
   color: white;
   text-decoration: none;
   display: block;
+  text-align: center;
 }
 
-ul li a:visited{
+ul li.list a:visited{
   color: white;
   display: block;
 }
 
-ul li .label-primary:hover {
+ul li div.label-primary:hover{
   background: rgb(235, 174, 50);
+  text-decoration: none;
 }
 
-span.label{
+div.label{
+  float: left;
   background: #611f73;
   width: 100px;
   height: 60px;
   font-size: 18px;
   border-radius: 0px;
-  line-height: 50px;
-  display: inline-block;
-  margin: 0px 60px 60px 0px;
+  line-height: 60px;
+  margin: 5px 35px 0px 0px;
 }
 
-li.standard {
-  padding: 34px 40px;
-  border-top: 1px solid #ebedf0;
-  border-bottom: 1px solid #ebedf0;
-  /*display: inline-block;*/
-  /*float: left;*/
-}
-
-div.well {
-  background-color: white;
-}
-
-span.label-primary{
+.description{
   float: left;
-  /*display: inline-block;*/
+  max-width: 750px;
+  padding: 0;
 }
 
-
-div.description{
-  max-width: auto;
-  max-height: auto;
+div.standard {
+  padding: 30px 0 30px 40px;
+  border-top: 1px solid #ebedf0;
+  clear: both;
+  display: inline-block;
+  width: 1130px;
 }
+

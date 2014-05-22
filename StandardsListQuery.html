@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="http://resources/sites/ccrp/Style%20Library/custom%20scripts/list-style.css">
-<link rel="stylesheet" type="text/css" href="http://resources/sites/ccrp/Style%20Library/custom%20scripts/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="http://resources/sites/ccrp/Style%20Library/custom%20scripts/bootstrap.min.css"> -->
 
 <div class="container">
 
@@ -53,7 +53,7 @@ $.when(clusters).done(function() {
 
 /* Begin first loop(grades) */
         for(var i in clustersList){
-            var Cluster = "<div class='standards'><h3><a href='http://resources/sites/ccrp/SitePages/Search%20Page.aspx?tags="+clustersList[i].Cluster+"'>"+clustersList[i].Cluster+"</a></h3>";
+            var Cluster = "<div class='standards'><h2 id='sub-heading'><a href='http://resources/sites/ccrp/SitePages/Search%20Page.aspx?tags="+clustersList[i].Cluster+"'>"+clustersList[i].Cluster+"</a></h2>";
 
             var Standards = [];
 
@@ -61,7 +61,7 @@ $.when(clusters).done(function() {
             for(var j in clustersList){
                 if(clustersList[i].Domain == clustersList[j].Domain){
 
-                    var Standard = "<li class='standard'><span class='label label-primary'><a href='http://resources/sites/ccrp/SitePages/Search%20Page.aspx?tags="+clustersList[j].Title+"'>"+clustersList[j].Title+"</a></span><div class="description"><p>"+clustersList[j].Standard+"</p></div></li>";
+                    var Standard = "<ul class='standard-block'><li class='list'><div class='standard'><div class='label label-primary'><a href='http://resources/sites/ccrp/SitePages/Search%20Page.aspx?tags="+clustersList[j].Title+"'>"+clustersList[j].Title+"</a></div><div class='description'><p class='standard-text'>"+clustersList[j].Standard+"</p></div></div></li></ul>";
 
                     if($.inArray(Standard,Standards)==-1){
                         Standards.push(Standard);
